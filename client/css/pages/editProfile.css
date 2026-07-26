@@ -1,0 +1,35 @@
+.edit-profile-page {
+  padding: var(--space-3) 0 var(--space-5);
+}
+
+.image-upload-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.image-upload-preview {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--color-border);
+}
+
+.image-upload-preview.cover {
+  width: 120px;
+  height: 60px;
+  border-radius: var(--radius-sm);
+}
+
+.image-upload-label {
+  cursor: pointer;
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+}
+
+.image-upload-label input {
+  display: none;
+}

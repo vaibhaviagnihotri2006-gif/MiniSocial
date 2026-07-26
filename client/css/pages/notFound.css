@@ -1,0 +1,15 @@
+.not-found-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-2);
+}
+
+.not-found-code {
+  font-size: 5rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  margin-bottom: var(--space-1);
+}

@@ -1,0 +1,33 @@
+.landing-hero {
+  min-height: calc(100vh - 0px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-4) var(--space-2);
+  background: radial-gradient(circle at top, var(--color-accent-light), var(--color-bg) 60%);
+}
+
+.landing-hero-inner {
+  max-width: 560px;
+}
+
+.landing-logo {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: var(--space-2);
+  color: var(--color-accent);
+}
+
+.landing-tagline {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.landing-cta {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: center;
+  flex-wrap: wrap;
+}

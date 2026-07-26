@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile — MiniSocial</title>
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <link rel="stylesheet" href="../css/pages/profile.css" />
+</head>
+<body>
+  <div id="navbar-mount"></div>
+
+  <main class="profile-page">
+    <div id="profile-header"></div>
+
+    <div class="container-wide profile-posts">
+      <div id="profile-posts-grid"></div>
+
+      <div class="feed-loader" id="profile-loader" hidden>Loading posts...</div>
+
+      <div class="empty-state" id="profile-posts-empty" hidden>
+        <div class="empty-state-icon">&#128221;</div>
+        <h3>No posts yet</h3>
+        <p>Nothing shared here so far.</p>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="../js/pages/profile.js"></script>
+</body>
+</html>

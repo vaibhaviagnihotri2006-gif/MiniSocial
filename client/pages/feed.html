@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feed — MiniSocial</title>
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="./feed.css" />
+</head>
+<body>
+  <div id="navbar-mount"></div>
+
+  <main class="feed-page">
+    <div class="container">
+      <section class="composer">
+        <div class="flex gap-1">
+          <img id="composer-avatar" class="post-card-avatar" src="/images/placeholders/default-avatar.png" alt="You" />
+          <div style="flex:1;">
+            <textarea class="form-textarea composer-textarea" id="composer-caption" placeholder="What's happening?" maxlength="500"></textarea>
+            <div id="composer-preview"></div>
+            <div class="composer-footer">
+              <label class="composer-attach">
+                <span>&#128247;</span>
+                <span>Photo</span>
+                <input type="file" id="composer-image-input" accept="image/jpeg,image/png,image/webp" />
+              </label>
+              <span class="char-counter" id="composer-char-counter">0 / 500</span>
+            </div>
+            <div class="form-error" id="composer-error"></div>
+          </div>
+        </div>
+        <div class="flex" style="justify-content:flex-end; margin-top: 8px;">
+          <button class="btn btn-primary" id="composer-submit">Post</button>
+        </div>
+      </section>
+
+      <section id="feed-list"></section>
+
+      <div class="feed-loader" id="feed-loader">Loading posts...</div>
+
+      <div class="empty-state" id="feed-empty" hidden>
+        <div class="empty-state-icon">&#128075;</div>
+        <h3>Your feed is quiet</h3>
+        <p>Follow people or create your first post to get things started.</p>
+        <a class="btn btn-primary mt-2" href="./search.html">Find people to follow</a>
+      </div>
+    </div>
+  </main>
+
+  <script type="module" src="../js/pages/feed.js"></script>
+</body>
+</html>

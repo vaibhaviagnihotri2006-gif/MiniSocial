@@ -1,0 +1,35 @@
+.feed-page {
+  padding: var(--space-3) 0 var(--space-5);
+}
+
+.feed-loader {
+  text-align: center;
+  padding: var(--space-3);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.composer-textarea {
+  min-height: 60px;
+}
+
+.composer-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--space-1);
+}
+
+.composer-attach {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: var(--color-accent);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.composer-attach input {
+  display: none;
+}

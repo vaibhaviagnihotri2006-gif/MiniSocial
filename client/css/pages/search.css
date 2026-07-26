@@ -1,0 +1,15 @@
+.search-page {
+  padding: var(--space-3) 0 var(--space-5);
+}
+
+.search-input-wrap {
+  margin-bottom: var(--space-3);
+}
+
+.search-input-wrap input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  font-size: var(--font-size-md);
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post — MiniSocial</title>
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+  <link rel="stylesheet" href="/css/pages/singlePost.css" />
+</head>
+<body>
+  <div id="navbar-mount"></div>
+
+  <main class="single-post-page">
+    <div class="container">
+      <div class="feed-loader" id="post-loader">Loading post...</div>
+
+      <div class="empty-state" id="post-not-found" hidden>
+        <div class="empty-state-icon">&#128269;</div>
+        <h3>Post not found</h3>
+        <p>This post may have been deleted.</p>
+        <a class="btn btn-primary mt-2" href="./feed.html">Back to feed</a>
+      </div>
+
+      <div id="post-detail-mount"></div>
+
+      <div id="comments-mount"></div>
+    </div>
+  </main>
+
+  <script type="module" src="/js/pages/singlePost.js"></script>
+</body>
+</html>
