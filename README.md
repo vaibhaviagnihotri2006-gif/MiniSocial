@@ -1,158 +1,258 @@
-# MiniSocial — Mini Social Media Platform
+# MiniSocial 🚀
 
-A full-stack social media platform: user auth, profiles, posts with image
-uploads, likes, comments, and a follow system.
+A full-stack social media platform built from scratch that allows users to create accounts, share posts, interact with content, and manage their profiles.
 
-**Stack:** Node.js / Express / MongoDB (Mongoose) on the backend, vanilla
-HTML/CSS/ES6 JavaScript on the frontend, JWT + bcrypt for auth, Multer for
-image uploads.
+🔗 **Live Demo:** https://vaibhavi-minisocial.netlify.app/
+
+---
+
+## 📌 Overview
+
+MiniSocial is a modern social networking application developed to practice and demonstrate full-stack web development concepts including frontend development, REST API design, authentication, database management, and deployment.
+
+The application provides a simple and clean platform where users can register, log in securely, create posts, view feeds, search users, and manage their profiles.
+
+---
+
+# 📸 Screenshots
+
+Add screenshots here:
+
+### Landing Page
+
+![Landing Page](screenshots/landing.png)
+
+### Login Page
+
+![Login](screenshots/login.png)
+
+### Feed
+
+![Feed](screenshots/feed.png)
+
+### Profile
+
+![Profile](screenshots/profile.png)
+
+---
+
+## ✨ Features
+
+### 🔐 Authentication
+
+* User registration and login
+* JWT-based authentication
+* Protected routes
+* Secure password hashing using bcrypt
+* Session management with local storage
+
+### 👤 User Features
+
+* User profile management
+* View user information
+* Search users
+* Follow-based social experience
+
+### 📝 Posts
+
+* Create and view posts
+* Display posts in a feed
+* Single post view
+* User-specific posts
+
+### 💬 Comments
+
+* Add comments on posts
+* View comment threads
+* Manage comments
+
+### 🎨 Frontend
+
+* Responsive multi-page UI
+* Clean component-based JavaScript structure
+* Dynamic rendering
+* Form validation
+* Error handling and notifications
+
+### 🚀 Deployment
+
+* Frontend deployed on Netlify
+* Backend deployed on Render
+* MongoDB Atlas cloud database integration
+
+---
+
+# 🛠 Tech Stack
+
+## Frontend
+
+* HTML5
+* CSS3
+* JavaScript (ES6 Modules)
+
+## Backend
+
+* Node.js
+* Express.js
+* REST API Architecture
+
+## Database
+
+* MongoDB
+* Mongoose ODM
+
+## Authentication & Security
+
+* JWT Authentication
+* bcrypt.js
+* Helmet
+* CORS
+* Express Rate Limiting
+* MongoDB Sanitization
+
+## Deployment
+
+* Netlify (Frontend)
+* Render (Backend)
+* MongoDB Atlas (Database)
+
+---
+
+# 🏗 Project Structure
 
 ```
-mini-social/
-├── server/     Express REST API (MVC + service layer)
-└── client/     Static vanilla JS frontend (multi-page)
+MiniSocial
+│
+├── client
+│   ├── pages
+│   ├── css
+│   ├── images
+│   └── js
+│
+├── server
+│   ├── controllers
+│   ├── models
+│   ├── routes
+│   ├── services
+│   ├── middleware
+│   └── config
+│
+└── README.md
 ```
 
-## 1. Prerequisites
+---
 
-- Node.js 18+
-- A MongoDB Atlas cluster (or any MongoDB 6+ instance) and its connection
-  string
-- npm
+# ⚙️ Installation & Setup
 
-## 2. Backend setup
+## Clone Repository
+
+```bash
+git clone https://github.com/yourusername/MiniSocial.git
+```
+
+Move into the project:
+
+```bash
+cd MiniSocial
+```
+
+---
+
+# Backend Setup
+
+Navigate to server:
 
 ```bash
 cd server
-cp .env.example .env
-# edit .env: set MONGO_URI, JWT_SECRET, CORS_ORIGIN
-npm install
-npm run dev      # nodemon, auto-restarts on changes
-# or
-npm start        # plain node
 ```
 
-The API listens on `http://localhost:5000` by default. Health check:
-`GET http://localhost:5000/api/health`.
+Install dependencies:
 
-### Environment variables (`server/.env`)
+```bash
+npm install
+```
 
-| Variable            | Description                                           |
-|---------------------|--------------------------------------------------------|
-| `NODE_ENV`           | `development` or `production`                         |
-| `PORT`                | Port the API listens on (default `5000`)              |
-| `MONGO_URI`           | MongoDB Atlas connection string                       |
-| `JWT_SECRET`          | Long random secret used to sign JWTs                  |
-| `JWT_EXPIRES_IN`      | Token lifetime, e.g. `1h`                              |
-| `CORS_ORIGIN`         | Comma-separated list of allowed frontend origins       |
-| `MAX_UPLOAD_SIZE_MB`  | Max image upload size in MB (default `5`)              |
+Create a `.env` file:
 
-## 3. Frontend setup
+```env
+PORT=5000
+NODE_ENV=development
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+CORS_ORIGIN=http://127.0.0.1:5500
+```
 
-The client is static — no build step. Serve it with any static file server,
-for example:
+Start backend:
+
+```bash
+npm start
+```
+
+Backend runs on:
+
+```
+http://localhost:5000
+```
+
+---
+
+# Frontend Setup
+
+Navigate to client:
 
 ```bash
 cd client
-npx serve .          # or: python3 -m http.server 5500
 ```
 
-Open `http://localhost:5500` (or whatever port your server prints).
+Open `index.html` using Live Server.
 
-Before running against a deployed backend, update
-`client/js/config.js` → `API_BASE_URL` with your Render backend URL.
-
-## 4. API overview
-
-All endpoints are prefixed with `/api`. Authenticated routes require an
-`Authorization: Bearer <token>` header.
-
-| Method | Route                          | Description                     | Auth |
-|--------|---------------------------------|----------------------------------|------|
-| POST   | /auth/register                  | Create account                   | No   |
-| POST   | /auth/login                     | Log in                           | No   |
-| GET    | /auth/me                        | Current user profile             | Yes  |
-| GET    | /users?search=&page=&limit=     | Search users                     | Yes  |
-| GET    | /users/:id                      | Get user by id                   | Yes  |
-| GET    | /users/username/:username       | Get user by username             | Yes  |
-| PUT    | /users/profile                  | Update own profile (multipart)   | Yes  |
-| POST   | /users/follow/:id                | Follow a user                    | Yes  |
-| DELETE | /users/unfollow/:id              | Unfollow a user                  | Yes  |
-| GET    | /posts?page=&limit=&user=        | Feed / user posts                | Yes  |
-| POST   | /posts                          | Create post (multipart, optional image) | Yes |
-| GET    | /posts/:id                      | Get single post                  | Yes  |
-| PUT    | /posts/:id                      | Edit own post caption            | Yes  |
-| DELETE | /posts/:id                      | Delete own post                  | Yes  |
-| POST   | /posts/:id/like                  | Like a post                      | Yes  |
-| DELETE | /posts/:id/unlike                | Unlike a post                    | Yes  |
-| GET    | /posts/:id/comments               | List comments on a post          | Yes  |
-| POST   | /posts/:id/comments               | Add a comment                    | Yes  |
-| DELETE | /comments/:id                    | Delete own comment / post owner  | Yes  |
-| GET    | /health                         | Service health check             | No   |
-
-Every response follows: `{ "success": bool, "message": string, "data": ... }`.
-Errors follow: `{ "success": false, "message": string, "error": { "code", "fields" } }`.
-
-## 5. Security
-
-- Passwords hashed with bcrypt (cost factor 11)
-- JWT-based stateless auth
-- helmet for security headers, CORS allowlist
-- express-rate-limit (stricter on `/auth/*`)
-- Custom NoSQL-injection sanitizer on body/params/query
-- Multer file-type and size validation for uploads
-- Ownership checks on every post/comment mutation
-
-## 6. Deployment
-
-### Backend → Render
-
-1. Push `server/` to a Git repository (or the whole monorepo).
-2. In Render, create a new **Web Service** pointing at the repo, root
-   directory `server`, build command `npm install`, start command
-   `npm start`. `render.yaml` in `server/` can also be used as a Blueprint.
-3. Set the environment variables from the table above (`MONGO_URI`,
-   `JWT_SECRET`, `CORS_ORIGIN` — set this to your Netlify URL — etc.) in the
-   Render dashboard.
-4. Uploaded images are stored on local disk under `server/uploads` and
-   served at `/uploads/<file>`. Render's filesystem is ephemeral on redeploy;
-   for a persistent production setup, mount a Render Disk at `server/uploads`
-   or swap the storage layer for an object store (S3, Cloudinary, etc).
-
-### Frontend → Netlify
-
-1. Push `client/` to a Git repository.
-2. In Netlify, create a new site from Git, base directory `client`,
-   publish directory `client` (or `.` if `client` is the repo root), no
-   build command needed.
-3. Before deploying, update `client/js/config.js` with your Render API URL.
-4. `netlify.toml` in `client/` configures the 404 fallback and basic
-   security headers.
-
-## 7. Project structure (MVC + services)
+Update API URL in:
 
 ```
-server/
-├── server.js              entry point
-├── app.js                 Express app assembly (middleware + routes)
-├── config/                env loader, DB connection
-├── models/                Mongoose schemas (User, Post, Comment)
-├── middleware/             auth, validation, rate limiting, upload, errors
-├── controllers/            thin HTTP layer, calls services
-├── services/                business logic, DB queries
-├── routes/                  route definitions + validation chains
-└── uploads/                 uploaded images (gitignored)
-
-client/
-├── index.html               landing page
-├── pages/                   login, register, feed, profile, edit-profile,
-│                             post, search, 404
-├── css/                      base tokens, shared components, per-page styles
-└── js/
-    ├── config.js             API base URL
-    ├── api/client.js         fetch wrapper (auth header, error normalization)
-    ├── state/                 auth session + pub-sub event bus
-    ├── components/            navbar, postCard, commentThread
-    ├── pages/                  one controller module per HTML page
-    └── utils/                  validators, router helpers, toast, time
+client/js/config.js
 ```
+
+Example:
+
+```javascript
+export const API_BASE_URL =
+"https://your-render-backend-url.onrender.com/api";
+```
+
+
+# 🔮 Future Improvements
+
+* Real-time chat using Socket.io
+* Notifications system
+* Image uploads with cloud storage
+* Like and bookmark functionality
+* Dark mode
+* Infinite scrolling feed
+* AI-based content recommendations
+
+---
+
+# 📚 Learning Outcomes
+
+Through this project, I gained practical experience in:
+
+* Building REST APIs
+* Connecting frontend and backend
+* Implementing authentication systems
+* Working with MongoDB databases
+* Debugging deployment issues
+* Managing environment variables
+* Deploying full-stack applications
+
+---
+
+# 👩‍💻 Author
+
+**Vaibhavi Agnihotri**
+
+* GitHub: https://github.com/vaibhaviagnihotri2006-gif
+* LinkedIn: https://www.linkedin.com/in/vaibhavi-agnihotri-539741327?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
+
+---
+
+⭐ If you like this project, consider giving it a star!
