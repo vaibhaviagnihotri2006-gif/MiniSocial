@@ -6,6 +6,5 @@ const isLocalhost =
 
 export const API_BASE_URL = isLocalhost
   ? 'http://localhost:5000/api'
-  : 'https://your-render-backend-url.onrender.com/api';
-
+  : 'https://minisocial-j5lk.onrender.com/api';
 export const SERVER_ORIGIN = API_BASE_URL.replace(/\/api\/?$/, '');
