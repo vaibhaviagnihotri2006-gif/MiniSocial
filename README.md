@@ -16,7 +16,6 @@ The application provides a simple and clean platform where users can register, l
 
 # 📸 Screenshots
 
-Add screenshots here:
 
 ### Landing Page
 
